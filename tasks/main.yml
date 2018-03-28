@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-mock-server
+
+- name: Getting mockserver jar
+  get_url:
+    url: "{{ mock_server_src }}"
+    dest: "{{ mock_server_dest }}"
+  notify: restart mock-server
+  become: yes
+
+- name: Adding service
+  template:
+    src: templates/mock-server-init.j2
+    dest: /etc/init.d/mock-server
+    owner: root
+    group: root
+    mode: 0755
+  notify: restart mock-server
+  become: yes
+
+- name: Starting service
+  service:
+    name: mock-server
+    state: "{{ 'started' if mock_server_started else 'stopped' }}"

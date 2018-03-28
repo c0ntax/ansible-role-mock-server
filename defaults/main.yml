@@ -1,0 +1,11 @@
+---
+# defaults file for ansible-role-mock-server
+
+mock_server_version: 5.3.0
+mock_server_src: http://search.maven.org/remotecontent?filepath=org/mock-server/mockserver-netty/{{ mock_server_version }}/mockserver-netty-{{ mock_server_version }}-jar-with-dependencies.jar
+mock_server_dest: /usr/share/java/mockserver-netty-{{ mock_server_version }}-jar-with-dependencies.jar
+mock_server_started: true
+#mock_server_server_port: 1080
+#mock_server_proxy_port: 1090
+#mock_server_proxy_remote_port: 80
+#mock_server_proxy_remote_host: localhost
